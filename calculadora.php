@@ -17,5 +17,28 @@
 </form>
 
 <?php
-    valorUm
+    if (isset($_GET['valorUm']) && ($_GET['valorDois']) && ($_GET['operacao'])) {
+        $valorUm = $_GET['valorUm'];
+        $valorDois = $_GET['valorDois'];
+        $operacao = $_GET['operacao'];
+
+        $resultado = 0;
+
+        if ($operacao == 'somar') {
+            $resultado = $valorUm + $valorDois;
+        } elseif ($operacao == 'subtrair') {
+            $resultado = $valorUm - $valorDois;
+        } elseif ($operacao == 'multiplicar') {
+            $resultado = $valorUm * $valorDois;
+        } elseif ($operacao == 'dividir') {
+            if ($valorDois == 0) {
+                $resultado = 'Não é possível dividir por zero';
+            } else {
+                $resultado = $valorUm / $valorDois;
+            }
+        }
+
+        echo $resultado;
+    }
+
 ?>
